@@ -1,0 +1,7 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dpb: <http://dbpedia.org/property/>
+SELECT ?var
+WHERE {
+    <https://dbpedia.org/resource/Punahou_School> dbp:occupation ?var .
+}
