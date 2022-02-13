@@ -1,0 +1,2 @@
+print(*['fizzbuzz' if (x % 3 == x % 5 == 0) else 'fizz' if (x % 3 == 0) else 'buzz' if (x % 5 == 0) else x for x in range(1, 50)])
+print(*map(lambda x: 'fizzbuzz' if (x % 3 == x % 5 == 0) else 'fizz' if (x % 3 == 0) else 'buzz' if (x % 5 == 0) else x, range(1,50)))
