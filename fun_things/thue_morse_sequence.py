@@ -10,7 +10,7 @@ def flip_bits(seq: str) -> str:
     result = ('0' * leading) + result
     return result
 
-def t_m_sequence(z: int, n) -> str:
+def t_m_sequence(z: int, n: str) -> str:
     """
     returns the inductively defined Thue-Morse sequence to z steps.
     let T be a set such that x E T, and if X E T, X!X E T
