@@ -4,8 +4,9 @@
 #****************************************************
 
 #settings
-create_virtualenv=1
+create_pipenv=1
 create_repo=1
+configure_vscode=1
 
 echo "Creating framework for a basic flask website."
 #-> initialize empty git repo
@@ -20,14 +21,32 @@ else
     echo "Skipping git init"
 fi
 #-> create virtual environment
-if [[ "$create_virtualenv" -eq 1 ]]; then
-    # specify version with: python3 -m virtualenv -p=<your_python_executable> venv
-    pip install virtualenv
-    python3 -m virtualenv venv
-    source venv/bin/activate
-    pip install flask
+if [[ "$create_pipenv" -eq 1 ]]; then
+    python3 -m pip install pipenv
+    python3 -m pipenv install flask
 else
     echo "Skipping virtual environment"
+fi
+#-> configure vscode pipenv interpreter path
+if [[ "$configure_vscode" -eq 1 ]]; then
+    pipenv_path="$(python3 -m pipenv --venv)"
+    mkdir .vscode
+    cat <<EOT >> .vscode/settings.json
+{
+    "python.defaultInterpreterPath": "$(echo $pipenv_path)",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/*.pyc": true,
+        "**/__pycache__": true
+    }
+}
+EOT
+else
+    echo "Skipping vscode config"
 fi
 #-> create basic folder structure
 mkdir tests
