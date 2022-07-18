@@ -56,13 +56,13 @@ mkdir static/images
 mkdir static/scripts
 mkdir static/styles
 #-> create empty files
-touch app.py
+touch main.py
 touch templates/base.html
 touch templates/index.html
 touch static/styles/styles.css
 touch static/styles/init_script.js
 #-> boilerplate code
-cat <<EOT >> app.py
+cat <<EOT >> main.py
 from flask import Flask, render_template
 
 app = Flask(__name__)
