@@ -40,15 +40,36 @@ def tex_generator(inp: set) -> str:
 
 if __name__ == '__main__':
     ex = {
-        frozenset({'p', 'NOT p', 'r', 'NOT s'}),
-        frozenset({'NOT p', 'q', 'NOT r', 's'})
+        frozenset({'NOT q', 'p'}),
+        frozenset({'NOT p', 'q'}),
+        frozenset({'NOT p'}),
+        frozenset({'NOT q', 'r'}),
+        frozenset({'NOT r'}),
     }
     ex2 = {
-        frozenset({'p'}),
-        frozenset({'NOT p'}),
-        frozenset({'NOT q'})
+        frozenset({'NOT p', 'q'}),
+        frozenset({'NOT r', 'q'}),
+        frozenset({'q', 'NOT r'}),
+        frozenset({'NOT p', 'r', 'NOT q'}),
     }
-    thing = expand_expression(ex)
+
+    ex3 = {
+        frozenset({'NOT p', 'q', 'r'}),
+        frozenset({'NOT q', 'p'}),
+        frozenset({'NOT r', 'p'}),
+        frozenset({'q', 'NOT r'}),
+        frozenset({'NOT q', 'NOT p'}),
+        frozenset({'NOT p'}),
+    }
+    ex4 = {
+        frozenset({'r', 'NOT q'}),
+        frozenset({'NOT p', 'NOT q'}),
+        frozenset({'NOT r', 'p'}),
+        frozenset({'p', 'NOT r', 'r'}),
+        frozenset({'q', 'NOT p'}),
+    }
+    thing = expand_expression(ex4)
+    print(len(thing))
 
     test = {frozenset({'NOT s', 'r', 'NOT p', 'p'}), frozenset({'NOT r', 'q', 's', 'NOT p'}), frozenset({'NOT p', 'NOT s', 'q', 's', 'p'})}
     #print(tex_generator(test))
